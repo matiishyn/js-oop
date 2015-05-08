@@ -137,3 +137,5 @@ person; // Object {name: "John"}
 
 Object.freeze(person); // snapshot of object, cannot be changed anything
 ```
+## Constructors and Prototypes
+http://jbt.github.io/markdown-editor/#U1ZWcM7PKy4pKk0uyS8qVkjMS1EIKMovyS+pLEgt5gIA
