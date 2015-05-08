@@ -118,3 +118,22 @@ Object.defineProperties(person, {
     }
 });
 ```
+
+### Preventing Obj Modification
+
+```javascript
+var person = { name: "Jack "};
+
+Object.preventExtensions(person);
+Object.isExtensible(person); //false
+person.lastName = "Smith";
+person; // Object {name: "Jack "}
+
+Object.seal(person); // nonextendable, nonconfigurable
+delete person.name
+person; // Object {name: "Jack "}
+person.name = 'John'
+person; // Object {name: "John"}
+
+Object.freeze(person); // snapshot of object, cannot be changed anything
+```
