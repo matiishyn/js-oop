@@ -64,4 +64,57 @@ function myFn(par1) {
 myFn.length; // 1 - function's arity - number of params that it's expecting
 ```
 
-http://jbt.github.io/markdown-editor/#fVPBbtswDD1PX0E4hyUFlqI7LshhQztgOyxFs92jyLStTpYMiU5jDPv3UZLttAU6X0RTj098j9IC9o3zBHWvSwR5dD1B57VVujMYwFWw292DtvB9L8RiAT+HDgMHC7j3utWkTzjmAK7gi3MGpU3xj749ok/hnpixHrPGpOCXLbHSFkshvpVoSVcDYy6s4ZM4HA6P8iSD8rojQXwKt1MQnqnYwPU1FCHxFtNWP1Hm3fm3EOIkPVjYwseNsGvlLFf2ipxfW9lihud+i5f7sN1uRyUJxWkU03mWteRad3xERQV8AGkBvefCbFkscaAaVL9B5wroA3I/psdEHlNRqYhf9PUBK/Ro1eTrFXz2Xg683kpCXu4iP69fe6tIO8vhLp3PwQOe784dM90yR+aJrub+2NJXnkZbHNti8WnkWK42ImUmbeVMhCzPIF8V6Y+yRlDOGK5wBJVHhL6DFlvnh6zm+VBnSW8NtR1YTLayGlUVIiXZx0CSSxk1Cb5MwuhA7M5zUDLrv4gsdIbAEZXkmeRKeJKBwQ16TViyMtdO7qb9tQ5pXY7Eq8tRSTYPcGoz5HlKX/ctexFem/+Sb4ZlxkoaviZiciM6ZJed9Dcr+CPezeCN+CuiUXZt0NbUpNobHtRU+D5wA5oGTtl0jeOTZh7ZBqBGEmhiCJ47VhjfKLf4Dw==
+## Objects
+### Detecting properties
+```javascript
+var o = {prop: false};
+
+if (o.prop) {}; // incorrect
+"prop" in o; // true, check both for own and prototype properties
+o.hasOwnProperty("someMethod"); // checks only for own methods
+```
+
+### Types of Properties - accessors:
+```javascript
+var person = {
+  _name: "Jack",
+
+  get name() {
+    console.log("Getting name");
+    return this._name;
+  },
+
+  set name(value) {
+    console.log("Setting name to %s", value);
+    this._name = value;
+  }
+};
+
+person.name
+// Getting name
+//"Jack"
+
+person.name = "John"
+// Setting name to John
+// "John"
+```
+
+multiple properties:
+```javascript
+var person = {};
+Object.defineProperties(person, {
+	_name: {
+    	value: "Jack",
+        enumerable: true,
+        configurable: true,
+        writable: true
+    },
+    
+    name: {
+    	get: function() {},
+        set: function() {},
+        enumerable: true,
+        configurable: true
+    }
+});
+```
