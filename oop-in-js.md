@@ -162,4 +162,70 @@ p1.constructor === Person
 ```
 
 ## Inheritance
-http://jbt.github.io/markdown-editor/#U1ZW8MzLSC3KLEnMS04FAA==
+### Methods from `Object.prototype`
+```javascript
+valueOf(); // gets called whenever an operator is used on an object
+var now = new Date(),
+	earlier = new Date(2010, 1, 1);
+now > earlier; // true, because 'getTime()' method was used as 'valueOf()'
+
+toString(); // is called whenever valueOf() returns a reference value instead of primitive
+```
+
+### Object Inheritance
+`Object.create()`
+```javascript
+var person1 = {
+  name: "Jack",
+  sayHi: function() { console.log("Hi, " + this.name); }
+}
+
+var person2 = Object.create(person1, {
+  name: 'John'
+});
+var person2 = Object.create(person1, {
+  name: {
+    value: "John"
+  }
+});
+
+person2.sayHi(); // Hi, John
+person1.isPrototypeOf(person2); // true
+```
+
+### Constructor Inheritance
+
+```javascript
+// parent
+function Parent() { this.p = 'parent'; }
+Parent.prototype.parentMethod = function() { return 'parent method'; }
+
+// child
+function Child() { this.c = 'child'; }
+Child.prototype.childMethod = function() { return 'child method'; }
+
+// inheritance
+Child.prototype = new Parent();
+Child.prototype.constructor = Child;
+
+// inherited object
+var c = new Child();
+// Child {c: "child", p: "parent", constructor: function, parentMethod: function}
+
+// child prototype was overwritten and childMethod dissapeared
+
+Child.prototype.constructor.name; // "Child"
+```
+
+similar with `Object.create()`
+```javascript
+Child.prototype = Object.create(Parent.prototype, {
+  constructor: {
+    value: Child
+  }
+});
+
+var c = new Child();
+// Child {c: "child", parentMethod: function}
+// only prototype was inherited - parent's p was not
+```
