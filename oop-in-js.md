@@ -124,17 +124,20 @@ Object.defineProperties(person, {
 ```javascript
 var person = { name: "Jack "};
 
+// preventExtensions
 Object.preventExtensions(person);
 Object.isExtensible(person); //false
 person.lastName = "Smith";
 person; // Object {name: "Jack "}
 
+// seal
 Object.seal(person); // nonextendable, nonconfigurable
 delete person.name
 person; // Object {name: "Jack "}
 person.name = 'John'
 person; // Object {name: "John"}
 
+// freeze
 Object.freeze(person); // snapshot of object, cannot be changed anything
 ```
 ## Constructors and Prototypes
