@@ -229,3 +229,23 @@ var c = new Child();
 // Child {c: "child", parentMethod: function}
 // only prototype was inherited - parent's p was not
 ```
+### Stealing constructor - `call` and `apply`
+```javascript
+// parent
+function Parent() { this.p = 'parent'; }
+Parent.prototype.parentMethod = function() { return 'parent method'; }
+
+// child
+function Child() { this.c = 'child'; Parent.call(this) }
+
+// inheritance
+Child.prototype = new Parent();
+Child.prototype.constructor = Child;
+
+var c = new Child();
+// Child {c: "child", p: "parent", constructor: function, parentMethod: function}
+// c has own values from Parent
+```
+
+## Object Patterns
+http://jbt.github.io/markdown-editor/#U1ZW8E/KSk0uUQhILClJLcorBgA=
