@@ -141,4 +141,25 @@ person; // Object {name: "John"}
 Object.freeze(person); // snapshot of object, cannot be changed anything
 ```
 ## Constructors and Prototypes
-http://jbt.github.io/markdown-editor/#U1ZWcM7PKy4pKk0uyS8qVkjMS1EIKMovyS+pLEgt5gIA
+#### Prototypes and Constructors
+```javascript
+function Person(name) {
+	this.name = name;
+}
+
+// 1. in case of overwriting prototype
+Person.prototype = {
+	// 2. important to keep connection
+    constructor: Person,
+    
+    sayName: function() {},
+    toString: function() {}
+};
+
+var p1 = new Person("Jack");
+p1 instanceOf Person; // true
+p1.constructor === Person
+```
+
+## Inheritance
+http://jbt.github.io/markdown-editor/#U1ZW8MzLSC3KLEnMS04FAA==
