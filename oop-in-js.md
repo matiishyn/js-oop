@@ -1,5 +1,9 @@
 # Short guide about principles of OOP in JS
 
+## Resources
+1. http://www.objectplayground.com/
+2. Principles of Object-Oriented JavaScript by Nicholas C. Zakas (http://www.nostarch.com/oojs)
+
 ## Types
 ### Primitive Types
   * Boolean
