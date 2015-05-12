@@ -1,9 +1,5 @@
 # Short guide about principles of OOP in JS
 
-## Resources
-1. http://www.objectplayground.com/
-2. Principles of Object-Oriented JavaScript by Nicholas C. Zakas (http://www.nostarch.com/oojs)
-
 ## Types
 ### Primitive Types
   * Boolean
@@ -251,5 +247,6 @@ var c = new Child();
 // c has own values from Parent
 ```
 
-## Object Patterns
-http://jbt.github.io/markdown-editor/#U1ZW8E/KSk0uUQhILClJLcorBgA=
+## Resources
+1. http://www.objectplayground.com/
+2. Principles of Object-Oriented JavaScript by Nicholas C. Zakas (http://www.nostarch.com/oojs)
